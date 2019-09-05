@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+Add Student
+{% endblock title %}
+
+
+{% block content %}
+
+<div class="conteiner h-100">
+  <div class="row h-100 align-items-center ">
+    <div class="col">
+      <form action="{% url 'adduz_url' %}" method="post">
+        {% csrf_token %}
+        <div class="form-row">
+          <div class="form-group col-md-2">
+            <label>Фамилия</label>
+            {{form.surname}}
+          </div>
+          <div class="form-group col-md-2">
+            <label>Имя</label>
+            {{form.name}}
+          </div>
+          <div class="form-group col-md-2">
+              <label >Отчество</label>
+              {{form.patronymic}}
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group  col-md-2">
+                <label>Пол</label>
+                {{form.gender}}
+              </div>
+              <div class="form-group  col-md-2">
+                  <label>День рождения</label>
+                  {{form.birthday}}
+                </div>
+                <div class="form-group  col-md-2">
+                    <label>Семейное положение</label>
+                    {{form.marital_status}}
+                  </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label>Адресс</label>
+                {{form.address}}
+              </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-2">
+            <label>Номер телефона</label>
+            {{form.phone}}
+            {% if form.phone.errors %}
+          <div class="alert alert-danger">
+            {{form.phone.errors}}
+          </div>
+          {% endif %}
+          </div>
+          <div class="form-group col-md-4">
+            <label>Email</label>
+            {{form.email}}
+          {% if form.email.errors %}
+          <div class="alert alert-danger">
+            {{form.email.errors}}
+          </div>
+          {% endif %}
+          </div>
+          
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label>Школа</label>
+                {{form.school}}
+              </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label>Аватар</label>
+                {{form.avatar}}
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Add User</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+{% endblock content %}
